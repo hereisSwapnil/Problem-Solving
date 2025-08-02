@@ -6,17 +6,18 @@ public:
             return {};
         }
 
-        set<string> seen;
-
-        set<string> res;
+        vector<string> res;
+        unordered_map<string, int> mp;
 
         for (int i = 0; i<=(n-10); i++){
             string sub = s.substr(i, 10);
-            if(seen.count(sub)>0){
-                res.insert(sub);
-            }
-            seen.insert(sub);
+            mp[sub]++;
         }
-        return vector<string>(res.begin(), res.end());
+        for(auto m: mp){
+            if(m.second > 1){
+                res.push_back(m.first);
+            }
+        }
+        return res;
     }
 };
