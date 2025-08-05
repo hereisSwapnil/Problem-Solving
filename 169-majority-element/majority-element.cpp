@@ -3,11 +3,11 @@ public:
     int majorityElement(vector<int>& nums) {
         int can = nums[0];
         int c = 0;
-        for (int n: nums){
+        for (int i = 0; i< nums.size(); i++){
             if(c == 0){
-                can = n;
+                can = nums[i];
             }
-            if(can == n){
+            if(can == nums[i]){
                 c++;
             }else{
                 c--;
