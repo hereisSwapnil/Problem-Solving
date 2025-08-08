@@ -28,24 +28,60 @@ public:
         // return res;
 
         // Optimised approach
-        map<int, int> mp;
+        // map<int, int> mp;
+        // int n = nums.size();
+        // vector<int> res;
+        // for(int i = 0; i<n; i++){
+        //     if(res.size() == 2){
+        //         return res;
+        //     }
+        //     int num = nums[i];
+        //     if(res.size() > 0 && res[0] == num ||
+        //     res.size() > 1 && res[1] == num){
+        //         continue;
+        //     }
+        //     int count = mp[num];
+        //     if(count+1 > n/3){
+        //         res.push_back(num);
+        //     }
+        //     mp[num] += 1;
+        // }
+        // return res;
+
+        
+        // Best solution
         int n = nums.size();
-        vector<int> res;
+        int ans1 = 0;
+        int count1 = 0;
+        int ans2 = 0;
+        int count2 = 0;
+
         for(int i = 0; i<n; i++){
-            if(res.size() == 2){
-                return res;
+            if(nums[i] == ans1){
+                count1++;
+            }else if(nums[i] == ans2){
+                count2++;
+            }else if(count1 == 0){
+                ans1 = nums[i];
+                count1++;
+            }else if(count2 == 0){
+                ans2 = nums[i];
+                count2++;
+            }else{
+                count1--;
+                count2--;
             }
-            int num = nums[i];
-            if(res.size() > 0 && res[0] == num ||
-            res.size() > 1 && res[1] == num){
-                continue;
-            }
-            int count = mp[num];
-            if(count+1 > n/3){
-                res.push_back(num);
-            }
-            mp[num] += 1;
         }
+        count1 = count2 = 0;
+        for (int num : nums) {
+            if (num == ans1) count1++;
+            else if (num == ans2) count2++;
+        }
+
+        vector<int> res;
+        if (count1 > n / 3) res.push_back(ans1);
+        if (count2 > n / 3) res.push_back(ans2);
+
         return res;
     }
 };
