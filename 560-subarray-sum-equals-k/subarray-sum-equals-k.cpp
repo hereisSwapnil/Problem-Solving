@@ -1,28 +1,19 @@
 class Solution {
 public:
     int subarraySum(vector<int>& nums, int k) {
-        int n = nums.size();
-
-        vector<int> preS(n);
-        int count = 0;
+        // Bruteforce Approach
         int sum = 0;
-
+        int count = 0;
+        int n = nums.size();
         for(int i = 0; i<n; i++){
-            sum += nums[i];
-            preS[i] = sum;
-        }
-
-        for(int i = 0; i<n; i++){
-           if(preS[i] == k){
-                count++;
-           }
-           for(int j = i+1; j<n; j++){
-                if(preS[j]-preS[i] == k){
+            sum = 0;
+            for(int j = i; j<n; j++){
+                sum += nums[j];
+                if(sum == k){
                     count++;
                 }
-           }
+            }
         }
-
         return count;
     }
 };
