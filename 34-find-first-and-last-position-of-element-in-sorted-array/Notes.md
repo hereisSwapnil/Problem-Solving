@@ -1,1 +1,1 @@
-<h2>find-first-and-last-position-of-element-in-sorted-array Notes</h2><hr>[ Time taken: 1 d 13 hrs 3 m 1 s ]
+<h2>find-first-and-last-position-of-element-in-sorted-array Notes</h2><hr>[ Time taken: 1 d 13 hrs 37 m 26 s ]
