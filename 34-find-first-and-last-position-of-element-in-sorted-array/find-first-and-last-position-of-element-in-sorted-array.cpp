@@ -11,13 +11,14 @@ public:
         int first = -1;
 
         while(left<=right){
-            mid = left + (right-left)/2;
-            if(nums[mid]>=target){
+            int mid = left + (right - left) / 2;
+            if(nums[mid] >= target){
                 right = mid - 1;
             }else{
                 left = mid + 1;
             }
-            if (nums[mid] == target) first = mid;
+            if(nums[mid] == target)
+                first = mid;
         }
 
         if(first == -1) return {-1, -1};
@@ -28,13 +29,14 @@ public:
         int second = -1;
 
         while(left<=right){
-            mid = left + (right-left)/2;
-            if(nums[mid]>target){
+            int mid = left + (right - left) / 2;
+            if(nums[mid] > target){
                 right = mid - 1;
             }else{
                 left = mid + 1;
             }
-            if (nums[mid] == target) second = mid;
+            if(nums[mid] == target)
+                second = mid;
         }
 
         return {first, second};
