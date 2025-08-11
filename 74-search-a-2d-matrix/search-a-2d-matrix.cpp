@@ -8,10 +8,8 @@ public:
         while(!found){
             if(matrix[i][0] <= target && target <= matrix[i][gap-1]){
                 found = true;
-                cout << "found" << endl;
                 break;
             }
-            cout << matrix[i][0] << "done" << matrix[i][gap-1] << endl;
             i++;
             if(i>=n){
                 return false;
