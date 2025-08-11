@@ -1,43 +1,21 @@
 class Solution {
 public:
-    int nCr(int n, int r)
-    {
-        long long res = 1;
-        if (r > n - r) r = n - r;
-        for (int i = 0; i < r; i++) {
-            res = res * (n - i) / (i + 1);
-        }
-        return (int) res;
-    }
     vector<vector<int>> generate(int numRows) {
-        // bruteforce
-        // vector<vector<int>> res;
-        // for(int n = 1; n<=numRows; n++){
-        //     vector<int> v(n);
-        //     for(int r = 1; r<=n; r++){
-        //         v[r-1] = nCr(n-1, r-1);
-        //     }
-        //     res.push_back(v);
-        // }
-        // return res;
-
-        // Optimised Version
-
-        vector<vector<int>> res;
-        for(int n = 0; n<numRows; n++){
-            vector<int> v(n+1);
-            v[0] = 1;
-            int val = 1;
-            int num = n;
+       vector<vector<int>> res;
+       for(int i = 0; i<numRows; i++){
+            vector<int> vec;
+            int num = i;
             int den = 1;
-            for(int r = 1; r<=n; r++){
-                val = (val * num) / den;
-                v[r] = val;
+            vec.push_back(1);
+            int num_ = 1;
+            for(int j = 0; j<i; j++){
+                num_ = num_ * num / den;
+                vec.push_back(num_);
                 num--;
                 den++;
             }
-            res.push_back(v);
-        }
-        return res;
+            res.push_back(vec);
+       } 
+       return res;
     }
 };
