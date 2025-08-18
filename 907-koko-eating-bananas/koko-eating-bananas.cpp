@@ -28,7 +28,7 @@ public:
             rate = i + (j-i)/2;
             long long hours = 0;
             for(int i = 0; i<n; i++){
-                hours += ceil((double)piles[i] / rate);
+                hours += (piles[i] + rate - 1) / rate;
             }
             if (hours <= h) {
                 ans = rate;
