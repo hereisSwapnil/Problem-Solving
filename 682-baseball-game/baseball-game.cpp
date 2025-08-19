@@ -17,7 +17,7 @@ public:
             else if(i == "C"){
                 int n = ans.size();
                 sum -= ans[n-1];
-                ans.pop_back();
+                ans.pop_back(); 
             }
             else{
                 sum += stoi(i);
