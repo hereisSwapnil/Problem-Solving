@@ -30,6 +30,8 @@ public:
             node = node->right;
             right++;
         }
+        cout << right << endl;
+        cout << left << endl;
         if(left == right){
             return pow(2, left) - 1;
         }else{
