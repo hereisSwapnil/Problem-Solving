@@ -22,18 +22,17 @@ public:
     // iterative approach
     void interativeInorder(TreeNode* node, vector<int>& result){
        stack<TreeNode*> st;
-       if(node == nullptr){
-            return;
-       }
+       if(node == nullptr) return;
        while(!st.empty() || node != nullptr){
-            while(node != nullptr){
+            if(node != nullptr){
                 st.push(node);
                 node = node->left;
+            }else{
+                node = st.top();
+                st.pop();
+                result.push_back(node->val);
+                node = node->right;
             }
-            node = st.top();
-            st.pop();
-            result.push_back(node->val);
-            node = node->right; 
        }
     }
 
