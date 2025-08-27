@@ -48,29 +48,28 @@ public:
     // best approach
     int totalFruit(vector<int>& fruits) {
         int n = fruits.size();
-        if(n == 0) return 0;
+        if (n == 0) return 0;
 
-        int maxL = 0;
-        int lastFruit = -1, secondLastFruit = -1;
-        int lastFruitCount = 0;
-        int currentMax = 0;
+        int lastType = -1, secondLastType = -1;
+        int lastTypeCount = 0;
+        int curMax = 0, maxL = 0;
 
-        for(int fruit : fruits){
-            if(fruit == lastFruit || fruit == secondLastFruit){
-                currentMax++;
+        for (int fruit : fruits) {
+            if (fruit == lastType || fruit == secondLastType) {
+                curMax++;
             } else {
-                currentMax = lastFruitCount + 1;
+                curMax = lastTypeCount + 1;
             }
 
-            if(fruit == lastFruit){
-                lastFruitCount++;
+            if (fruit == lastType) {
+                lastTypeCount++;
             } else {
-                lastFruitCount = 1;
-                secondLastFruit = lastFruit;
-                lastFruit = fruit;
+                lastTypeCount = 1;
+                secondLastType = lastType;
+                lastType = fruit;
             }
 
-            maxL = max(maxL, currentMax);
+            maxL = max(maxL, curMax);
         }
 
         return maxL;
