@@ -25,23 +25,54 @@ public:
     // }
 
     // Optimized approach
+    // int totalFruit(vector<int>& fruits) {
+    //     int n = fruits.size();
+    //     int i = 0;
+    //     int j = 0;
+    //     unordered_map<int, int> mp;
+    //     int maxL = 0;
+    //     while(j<n){
+    //         mp[fruits[j]]++;
+    //         if(mp.size()>2){
+    //             mp[fruits[i]]--;
+    //             if(mp[fruits[i]] == 0) mp.erase(fruits[i]);
+    //             i++;
+    //         }else{
+    //             maxL = max(maxL, j-i+1);
+    //         }
+    //         j++;
+    //     }
+    //     return maxL;
+    // }
+
+    // best approach
     int totalFruit(vector<int>& fruits) {
         int n = fruits.size();
-        int i = 0;
-        int j = 0;
-        unordered_map<int, int> mp;
+        if(n == 0) return 0;
+
         int maxL = 0;
-        while(j<n){
-            mp[fruits[j]]++;
-            if(mp.size()>2){
-                mp[fruits[i]]--;
-                if(mp[fruits[i]] == 0) mp.erase(fruits[i]);
-                i++;
-            }else{
-                maxL = max(maxL, j-i+1);
+        int lastFruit = -1, secondLastFruit = -1;
+        int lastFruitCount = 0;
+        int currentMax = 0;
+
+        for(int fruit : fruits){
+            if(fruit == lastFruit || fruit == secondLastFruit){
+                currentMax++;
+            } else {
+                currentMax = lastFruitCount + 1;
             }
-            j++;
+
+            if(fruit == lastFruit){
+                lastFruitCount++;
+            } else {
+                lastFruitCount = 1;
+                secondLastFruit = lastFruit;
+                lastFruit = fruit;
+            }
+
+            maxL = max(maxL, currentMax);
         }
+
         return maxL;
     }
 };
