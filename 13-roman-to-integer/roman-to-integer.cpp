@@ -42,23 +42,29 @@ public:
 
     // Solution 2
     int romanToInt(string s) {
-        int val[256] = {};
-        val['I'] = 1;
-        val['V'] = 5;
-        val['X'] = 10;
-        val['L'] = 50;
-        val['C'] = 100;
-        val['D'] = 500;
-        val['M'] = 1000;
+        auto value = [](char c) {
+            switch (c) {
+                case 'I': return 1;
+                case 'V': return 5;
+                case 'X': return 10;
+                case 'L': return 50;
+                case 'C': return 100;
+                case 'D': return 500;
+                case 'M': return 1000;
+                default: return 0;
+            }
+        };
 
         int num = 0;
-        for (int i = 0; i < s.size(); i++) {
-            if (i + 1 < s.size() && val[s[i]] < val[s[i + 1]]) {
-                num -= val[s[i]];
-            } else {
-                num += val[s[i]];
-            }
+        int prev = 0;
+
+        for (int i = s.size() - 1; i >= 0; i--) {
+            int curr = value(s[i]);
+            if (curr < prev) num -= curr;
+            else num += curr;
+            prev = curr;
         }
+
         return num;
     }
 };
