@@ -23,8 +23,6 @@ public:
                 maxC = max(maxC, c);
             }
             else if(i == ')') c--;
-
-            
         }
         return maxC;
     }
