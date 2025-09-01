@@ -56,13 +56,10 @@ public:
         };
 
         int num = 0;
-        int prev = 0;
+        for(int i = 0; i<s.size(); i++){
 
-        for (int i = s.size() - 1; i >= 0; i--) {
-            int curr = value(s[i]);
-            if (curr < prev) num -= curr;
-            else num += curr;
-            prev = curr;
+            if (value(s[i]) < value(s[i+1])) num -= value(s[i]);
+            else num += value(s[i]);
         }
 
         return num;
