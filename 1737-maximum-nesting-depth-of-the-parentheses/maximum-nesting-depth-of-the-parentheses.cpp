@@ -18,10 +18,13 @@ public:
         int c = 0;
         int maxC = 0;
         for(char i: s){
-            if(i == '(') c++;
+            if(i == '(') {
+                c++;
+                maxC = max(maxC, c);
+            }
             else if(i == ')') c--;
 
-            maxC = max(maxC, c);
+            
         }
         return maxC;
     }
