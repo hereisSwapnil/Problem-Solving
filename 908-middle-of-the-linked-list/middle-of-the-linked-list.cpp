@@ -17,12 +17,7 @@ public:
             node = node->next;
             len++;
         }
-        int tar;
-        if(len%2 == 0){
-            tar = len/2;
-        }else{
-            tar = ceil(len/2);
-        }
+        int tar = ceil(len/2);
 
         node = head;
         len = 0;
