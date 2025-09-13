@@ -10,21 +10,32 @@
  */
 class Solution {
 public:
-    ListNode* middleNode(ListNode* head) {
-        ListNode* node = head;
-        int len = 0;
-        while(node != nullptr){
-            node = node->next;
-            len++;
-        }
-        int tar = ceil(len/2);
+    // ListNode* middleNode(ListNode* head) {
+    //     ListNode* node = head;
+    //     int len = 0;
+    //     while(node != nullptr){
+    //         node = node->next;
+    //         len++;
+    //     }
+    //     int tar = ceil(len/2);
 
-        node = head;
-        len = 0;
-        while(len < tar){
-            node = node->next;
-            len++;
+    //     node = head;
+    //     len = 0;
+    //     while(len < tar){
+    //         node = node->next;
+    //         len++;
+    //     }
+    //     return node;
+    // }
+
+    // can be done using slow fast (toroise hare approach)
+    ListNode* middleNode(ListNode* head) {
+        ListNode* slow = head;
+        ListNode* fast = head;
+        while(fast->next && fast->next->next){
+            fast = fast->next->next;
+            slow = slow->next;
         }
-        return node;
+        return fast->next ? slow->next : slow;
     }
 };
