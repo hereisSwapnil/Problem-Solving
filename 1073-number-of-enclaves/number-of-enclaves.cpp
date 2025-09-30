@@ -58,6 +58,7 @@ public:
     int numEnclaves(vector<vector<int>>& grid) {
         int n = grid.size();
         int m = grid[0].size();
+        
         vector<vector<int>> vis(n, vector<int>(m, 0));
         queue<pair<int, int>> q;
 
